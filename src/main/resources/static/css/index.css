@@ -128,6 +128,9 @@
     width: 1226px;
     flex-shrink: 0;
     height: 447px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .layout #banner #cate_menu {
