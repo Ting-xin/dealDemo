@@ -1,0 +1,56 @@
+#sort {
+    width: 1226px;
+    position: relative;
+    flex-shrink: 0;
+    height: 50px;
+    margin-top: 10px;
+    align-items: center;
+    display: flex;
+}
+
+ #sort .order {
+    height: 50px;
+    line-height: 50px;
+    float: right;
+}
+
+ #sort .order .car {
+    height: 40px;
+    width: 120px;
+    border: none;
+    background: #1baeae;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    margin-right: 40px;
+}
+
+ #sort .order .car:hover {
+    border: 1px solid #fff;
+}
+
+ #sort .order {
+    height: 50px;
+    line-height: 50px;
+    float: right;
+}
+
+ #sort .order .car {
+    height: 50px;
+    width: 156px;
+    border: none;
+    background: #1baeae;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    margin-right: 40px;
+}
+
+ #sort .order .car:hover {
+    border: 1px solid #fff;
+}
+
+.el-pagination{
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,49 @@
+<!-- Copyright (c) 2019-2020 十三 all rights reserved. -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head-fragment(title,path)">
+    <meta charset="UTF-8">
+    <title>Mall</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/common/bootstrap-modal.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/common/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/common/swiper-bundle.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/common/element-ui.css">
+
+    <link rel="stylesheet" type="text/css" href="/static/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/header.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/brand.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/brand_detail.css">
+    <!--    <link rel="stylesheet" th:href="@{'/mall/styles/'+${path}+'.css'}">-->
+    <meta name="keywords" content="Mall, Coupon, 商城，优惠卷" />
+    <meta name="description" content="大量优惠卷"/>
+    <style>
+        .el-autocomplete{
+            width: 100%;
+        }
+    </style>
+</head>
+<header id="header" th:fragment="header-fragment">
+    <div class="center">
+        <div class="banner_x center">
+            <a th:href="@{/index}" class="logo"><h1>Mall</h1></a>
+            <ul class="fl">
+                <li><a th:href="@{/index}">Home</a></li>
+                <li><a th:href="@{/brand}">Brands</a></li>
+                <li><a th:href="@{/category}">Categories</a></li>
+
+            </ul>
+            <div class="fr">
+                <div id="searchDiv" style="width: 300px; height: 60px; display: flex; justify-content: center; align-items: center;">
+                    <el-autocomplete
+                            v-model="state"
+                            :fetch-suggestions="querySearchAsync"
+                            placeholder="Search Stores"
+                            @select="handleSelect"
+                    ></el-autocomplete>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+</html>

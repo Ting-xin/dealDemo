@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="mall/header::head-fragment('NewBee商城-首页','index')">
+    <link rel="stylesheet" type="text/css" href="/static/css/common/element-ui.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/brand_detail.css">
+</head>
+<body>
+<header th:replace="mall/header::header-fragment"></header>
+<el-container id="detail" style="min-height: 550px">
+    <el-aside>
+        <div class="flexCenter" style="height: 300px">
+            <el-avatar shape="square" :size="200" fit="contain" :src="brand.logo"></el-avatar>
+            <div style="font-size: 1.17em;font-weight: bold">{{brand.storeName}}</div>
+            <a :href="brand.url">Official Site</a>
+        </div>
+        <div class="divideLine"></div>
+        <div style="height: 150px;">
+            <h4 class="title">
+                Category
+            </h4>
+            <el-tree :data="treeData" :props="defaultProps" @node-click="handleNodeClick" default-expand-all
+                     style="font-size: 25px; height: 80%; width: 80%;padding-left: 10%"></el-tree>
+        </div>
+        <div class="divideLine"></div>
+        <div style="height: 300px">
+            <h4 class="title">
+                description
+            </h4>
+            <div class="content" style="padding: 5px">
+                {{brand.description}}
+            </div>
+        </div>
+    </el-aside>
+    <el-main>
+<div>
+    <el-radio-group v-model="radio" @change="handleRadioChange">
+        <el-radio-button label="Deal"></el-radio-button>
+        <el-radio-button label="Coupon"></el-radio-button>
+    </el-radio-group>
+</div>
+<div>
+    <template>
+        <div style="display: grid;grid-template-columns: repeat(auto-fit, 400px); grid-row-gap: 20px;">
+            <template v-if="radio === 'Deal'">
+                <template v-for="o in deal">
+                    <a :href="o.desUrl">
+                        <div  class="quan-item quan-d-item" style="display: flex; justify-content: center; align-items: center;width: 400px;height: 190px">
+                            <div class="q-type">
+                                <div class="q-price">
+                                    <strong class="num">{{o.title}}</strong>
+                                    <div class="txt">
+                                        <div class="typ-txt">
+                                            {{o.storeName}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="q-range" style="margin-right: 80px">
+                                {{o.description}}
+                            </div>
+                            <div class="q-opbtns">
+                                <b class="semi-circle"></b>
+                            </div>
+                        </div>
+                    </a>
+                </template>
+            </template>
+            <template v-else>
+                <template v-for="o in coupon">
+                    <a href="#" v-on:click="copy(o.code)">
+                        <div  class="quan-item quan-d-item" style="display: flex; justify-content: center; align-items: center;width: 400px;height: 190px">
+                            <div class="q-type">
+                                <div class="q-price">
+                                    <strong class="num">{{o.title}}</strong>
+                                    <div class="txt">
+                                        <div class="typ-txt">
+                                            {{o.storeName}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="q-range" style="margin-right: 80px">
+                                {{o.description}}
+                            </div>
+                            <div class="q-opbtns">
+                                <b class="semi-circle"></b>
+                            </div>
+                        </div>
+                    </a>
+                </template>
+            </template>
+        </div>
+    </template>
+</div>
+
+
+    </el-main>
+</el-container>
+
+<div th:replace="mall/footer::footer-fragment"></div>
+</body>
+<script src="/static/js/common/axios.min.js" type="text/javascript"></script>
+<script src="/static/js/common/vue.min.js"></script>
+<script src="/static/js/common/element-ui.js"></script>
+<script src="/static/js/brand_detail.js"></script>
+<script src="/static/js/search.js"></script>
+</html>

@@ -1,0 +1,21 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://localhost:3306/knoji
+    username: root
+    password: wtx
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  thymeleaf:
+    enabled: true
+    content: text/html
+    check-template-location: true
+    cache: false
+  mvc:
+    static-path-pattern: /static/**
+  resources:
+    static-locations: classpath:/resources/, classpath:/static/, classpath:/public/
+#server:
+#  servlet:
+#    context-path: /deal2you
