@@ -40,7 +40,7 @@
 </div>
 <div>
     <template>
-        <div style="display: grid;grid-template-columns: repeat(auto-fit, 400px); grid-row-gap: 20px;">
+        <div style="display: grid;grid-template-columns:  repeat(auto-fill, minmax(400px, 1fr));; grid-row-gap: 20px;">
             <template v-if="radio === 'Deal'">
                 <template v-for="o in deal">
                     <a :href="o.desUrl">
