@@ -51,15 +51,20 @@ public class PageController {
             size = 10;
         }
         Map<String, String> map = new HashMap<>();
-        map.put("popularity", "a");
-        map.put("rating", "b");
+        map.put("Popularity", "a");
+        map.put("Rating", "b");
         map.put("Alphabetical", "c");
-        if(orderType == null || !map.containsKey(orderType)) {
-            orderType = "abc";
+        JsonResult jsonResult;
+        if(map.containsKey(orderType)) {
+            if(orderType.equals("Popularity") || orderType.equals("Rating")) {
+                jsonResult = dealService.getAllBrand(page -1, size);
+            } else {
+                jsonResult = dealService.getAllBrandAbc(page - 1, size);
+            }
         } else {
-            orderType = map.get(orderType);
+            jsonResult = dealService.getAllBrand(page -1, size);
         }
-        JsonResult jsonResult = dealService.getAllBrandAbc(page - 1, size);
+        // JsonResult jsonResult = dealService.getAllBrandAbc(page - 1, size);
         Map tempMap = (Map)jsonResult.getData();
         modelAndView.addObject("brands", (ArrayList)tempMap.get("data"));
         return modelAndView;
